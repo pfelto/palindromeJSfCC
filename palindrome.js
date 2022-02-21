@@ -1,21 +1,21 @@
 function palindrome(str) {
-    let x = str.trim().replace(/\W|_/g,"");
-    console.log(x);
-    let midpoint;
-    if(x.length % 2 === 0){
-        midpoint = x.length/2
-    }else{
-        midpoint = x.length/2 + 1
-    }
-    let y = x.slice(0,x.length/2);
-    let z = x.slice(midpoint);
-    console.log(y)
-    console.log(z)
-    return y === z;
+  const x = str.trim().replace(/\W|_/g, '').toLowerCase().split('');
+  let midpoint;
+  if (x.length % 2 === 0) {
+    midpoint = x.length / 2;
+  } else {
+    midpoint = x.length / 2 + 1;
   }
-  
-  console.log(palindrome("   _e y  e "));
+  const y = x.slice(0, x.length / 2);
+  const z = x.slice(midpoint).reverse();
+  for (let i = 0; i < y.length; i += 1) {
+    if (y[i] !== z[i]) return false;
+  }
+  return true;
+}
 
-  console.log(palindrome("0_0 (: /-\ :) 0-0"))
+palindrome('   _e y  e ');
 
-  console.log(palindrome("five|\_/|four"))
+palindrome('0_0 (: /-\ :) 0-0');
+
+palindrome('five|\_/|four');
